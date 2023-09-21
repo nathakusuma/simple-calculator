@@ -1,4 +1,5 @@
 import math
+import sympy
 
 
 def input_int(text):
@@ -49,9 +50,12 @@ def calc(num1, operand, num2):
         case "%":
             return num1 % num2
         case "root":
-            return math.pow(num1, 1.0 / num2)
+            res = math.pow(num1, 1.0 / num2)
+            if num2 == 2:
+                return str(sympy.sqrt(num1)) + " or " + str(res)
+            return res
         case "pow":
             return math.pow(num1, num2)
 
 
-print("The result is "+str(calc(num1, operand, num2)))
+print("The result is " + str(calc(num1, operand, num2)))
